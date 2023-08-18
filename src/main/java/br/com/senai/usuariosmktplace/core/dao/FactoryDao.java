@@ -1,6 +1,6 @@
 package br.com.senai.usuariosmktplace.core.dao;
 
-import br.com.senai.usuariosmktplace.core.dao.postgres.DaoPostegresUsuario;
+import br.com.senai.usuariosmktplace.core.dao.postgres.DaoPostgresUsuario;
 
 public class FactoryDao {
 	
@@ -10,7 +10,7 @@ public class FactoryDao {
 	
 	
 	public DaoUsuario getDaoUsuario() {
-		return new DaoPostegresUsuario();
+		return new DaoPostgresUsuario();
 	}
 	
 	public static FactoryDao getInstance() {
