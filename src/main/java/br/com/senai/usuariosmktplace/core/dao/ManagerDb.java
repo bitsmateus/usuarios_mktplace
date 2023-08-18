@@ -16,11 +16,11 @@ public class ManagerDb {
 
 	private ManagerDb() {
 		try {
-			InputStream is = new FileInputStream("src/main/resources/aplication.properties");
+			InputStream is = new FileInputStream("src/main/resources/application.properties");
 			Properties configuracoes = new Properties();
 			configuracoes.load(is);
 			Class.forName(configuracoes.getProperty("database-jdbc-driver")).getDeclaredConstructor().newInstance();
-			this.conexao = DriverManager.getConnection(configuracoes.getProperty("database-jdbc-url"),
+			this.conexao = DriverManager.getConnection(configuracoes.getProperty("database-url"),
 					configuracoes.getProperty("database-user"), configuracoes.getProperty("database-password"));
 		} catch (Exception e) {
 			throw new RuntimeException(
