@@ -60,11 +60,18 @@ public class UsuarioService {
 		Usuario usuarioAlterado = new Usuario(login, senhaNovaCriptografada, nomeCompleto);
 
 		this.dao.alterar(usuarioAlterado);
-		
+
 		usuarioAlterado = dao.buscarPor(login);
-		
+
 		return usuarioAlterado;
-		
+
+	}
+
+	public Usuario buscarPor(String login) {
+		Preconditions.checkArgument(!Strings.isNullOrEmpty(login), "O login é obritório");
+		Usuario usuarioEncontrado = dao.buscarPor(login);
+		Preconditions.checkNotNull(usuarioEncontrado, "Não foi encontrado usuario vinculado ao login informado");
+		return usuarioEncontrado;
 	}
 
 	private String removerAcentoDo(String nomeCompleto) {
@@ -107,7 +114,7 @@ public class UsuarioService {
 				usuarioEncontrado = dao.buscarPor(loginGerado);
 				if (usuarioEncontrado == null) {
 					if (loginGerado.length() > 40) {
-						loginGerado = loginGerado.substring(0, 40); 
+						loginGerado = loginGerado.substring(0, 40);
 					}
 					return loginGerado;
 				}
