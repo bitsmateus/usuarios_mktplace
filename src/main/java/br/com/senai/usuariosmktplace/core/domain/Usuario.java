@@ -7,7 +7,15 @@ import lombok.Setter;
 
 public class Usuario {
 
-	@Getter @Setter
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
 	private String login;
 
 	private String senha;
